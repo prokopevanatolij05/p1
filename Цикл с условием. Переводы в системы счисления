@@ -1,0 +1,100 @@
+Console.WriteLine("If your number or base more than 10 you should use this designation \nA=10 B=11 C=12 D=13 E=14 F=15");
+Console.WriteLine("Please input base");
+string base1 = (Console.ReadLine());//вводим основание первоначальной системы
+int base2 = 0;
+if (base1[0] == 65)
+{
+    base2 = 10;
+}
+if (base1[0] == 66)
+{
+    base2 = 11;
+}
+if (base1[0] == 67)
+{
+    base2 = 12;
+}
+if (base1[0] == 68)
+{
+    base2 = 13;
+}
+if (base1[0] == 69)
+{
+    base2 = 14;
+}
+if (base1[0] == 70)
+{
+    base2 = 15;
+}
+if (base1[0] > 49 && base1[0] <= 57)
+{
+    base2 = Convert.ToInt32(base1);
+}
+Console.WriteLine("Please, input number");// вводим число этой системы
+string numberstr = Console.ReadLine();
+string s5 = "";
+for (int i = 0; i < numberstr.Length; i++)
+{
+    if (numberstr[i] == 65)
+    {
+        s5 = numberstr.Replace("A", "10");
+        numberstr = s5;
+    }
+    if (numberstr[i] == 66)
+    {
+        s5 = numberstr.Replace("B", "11");
+        numberstr = s5;
+    }
+    if (numberstr[i] == 67)
+    {
+        s5 = numberstr.Replace("C", "12");
+        numberstr = s5;
+    }
+    if (numberstr[i] == 68)
+    {
+        s5 = numberstr.Replace("D", "13");
+        numberstr = s5;
+    }
+    if (numberstr[i] == 69)
+    {
+        s5 = numberstr.Replace("E", "14");
+        numberstr = s5;
+    }
+    if (numberstr[i] == 70)
+    {
+        s5 = numberstr.Replace("F", "15");
+        numberstr = s5;
+    }
+}
+
+decimal number = Convert.ToDecimal(numberstr);
+int numberint = Convert.ToInt32(number);//отделяем от всего числа только целую
+string convertive = Convert.ToString(number);//переводим все число в строку
+double result = 0;
+double level = 0;// значение степени
+decimal y = number - numberint;//отделение дробной от целой
+double doublepart = Convert.ToDouble(y);//конвертируем дробную часть в тип double
+string str = Convert.ToString(y);//конвертируем дробную часть в тип string
+int z = str.Length;// находим длину
+if (base2 > 10 || base2 < 10)// если число не в 10-ой системе, то сначала переводим в 10-у.
+{
+    while (numberint != 0)// перевод целой части
+    {
+        int lastnumeral = (int)((numberint % 10) * Math.Pow(base2, level));
+        result += lastnumeral;
+        numberint /= 10;
+        level++;
+    }
+    double res = doublepart * Math.Pow(10, z - 2);
+    level = 0 - (z - 2);
+    while (res != 0)// перевод дробной части
+    {
+        double lastnumeral = ((res % 10) * Math.Pow(base2, level));
+        result += lastnumeral;
+        res = (int)(res / 10);
+        level++;
+    }
+}
+
+Console.WriteLine("Summ={0}", result);
+Console.ReadKey();
