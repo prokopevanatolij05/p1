@@ -26,16 +26,17 @@ public class AUTO
 
     static void Main(string[] args)
     {
-        AUTO car = new AUTO(50, 55000);
-        var driveInfo = car.Drive(35);
+        AUTO AUTO = new AUTO(50, 55000);
+        var driveInfo = AUTO.Drive(35);
         if (driveInfo.needRefuel)
         {
             Console.WriteLine($"Бензина хватило {driveInfo.distanceСovered}км, пора заправиться!");
         }
         else
         {
-            Console.WriteLine($"Вы проехали {driveInfo.distanceСovered}км, бензина осталось {car.GasolineAmount}л.");
+            Console.WriteLine($"Вы проехали {driveInfo.distanceСovered}км, бензина осталось {AUTO.GasolineAmount}л.");
         }
         Console.ReadLine();
     }
 }
+
