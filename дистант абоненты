@@ -1,0 +1,169 @@
+ class Subscriber
+    {
+        
+        private int indNum;
+        private string name;
+        private string lastName;
+        private string midle;
+        private string address;
+        private int numberCards;
+        private int debit;
+        private int credit;
+        private string intercityTime;
+        private string cityTime;
+         
+        public int IndNum
+        {
+            get
+            {
+                return this.indNum;
+            }
+            set
+            {
+                this.indNum = value;
+            }
+        }
+        public string Name
+        {
+            get
+            {
+                return this.name;
+            }
+            set
+            {
+                this.name = value;
+            }
+        }
+        public string Lastname
+        {
+            get
+            {
+                return this.lastName;
+            }
+            set
+            {
+                this.lastName = value;
+            }
+        }
+        public string Midle
+        {
+            get
+            {
+                return this.midle;
+            }
+            set
+            {
+                this.midle = value;
+            }
+        }
+        public string Address
+        {
+            get
+            {
+                return this.address;
+            }
+            set
+            {
+                this.address = value;
+            }
+        }
+        public int NumberCards
+        {
+            get
+            {
+                return this.numberCards;
+            }
+            set
+            {
+                this.numberCards = value;
+            }
+        }
+        public int Debit
+        {
+            get
+            {
+                return this.debit;
+            }
+            set
+            {
+                this.debit = value;
+            }
+        }
+        public int Credit
+        {
+            get
+            {
+                return this.credit;
+            }
+            set
+            {
+                this.credit = value;
+            }
+        }
+        public string IntercityTime
+        {
+            get
+            {
+                return this.intercityTime;
+            }
+            set
+            {
+                this.intercityTime = value;
+            }
+        }
+        public string CityTime
+        {
+            get
+            {
+                return this.cityTime;
+            }
+            set
+            {
+                this.cityTime = value;
+            }
+        }
+ 
+        public Subscriber(int indNum, string name, string lastName, string midle, string address, int numberCards, int debit, int credit, string intercityTime, string cityTime)
+        {
+            this.indNum = indNum;
+            this.name = name;
+            this.lastName = lastName;
+            this.midle = midle;
+            this.address = address;
+            this.numberCards = numberCards;
+            this.debit = debit;
+            this.credit = credit;
+            this.intercityTime = intercityTime;
+            this.cityTime = cityTime;
+        }
+ 
+ 
+        public static int Values(Subscriber[] Klient)
+        {            
+            for (int i = 0; i < Klient.Length; i++)
+            {
+                Subscriber st = Klient[i];               
+            }
+ 
+            return Klient[];
+        }       
+ 
+    }
+         
+ 
+ 
+ 
+    class Program
+    {
+         static void Main(string[] args)
+         {
+            Subscriber[] Klient = new Subscriber[3]
+            { 
+                new Subscriber(2341242, "Паша", "Иванов",  "Анатольевич", "Киев", 21221312, 13232, 21232, "12:23", "44:53"),
+                new Subscriber(2123135, "Петр", "Петров", "Петрович" , "Харьков", 100020321, 434212, 34124, "20:41", "31:52"),
+                new Subscriber(1421421, "Александр", "Александров", "Александрович" , "Чернигов", 897676585, 321412, 421123, "19:12", "1:31:34")
+            };
+                   
+              Console.ReadKey();
+         }
+    }
