@@ -1,0 +1,82 @@
+public class Car
+{
+    public double TankVolume { get; private set; }
+    public double GasolineAmount { get; private set; }
+    public double GasolineConsumption100 { get; private set; }
+    public double Mileage { get; private set; }
+    public Car(double gasolineAmount, double mileage, double tankVolume = 50, double gasolineConsumption100 = 8.4) { GasolineAmount = gasolineAmount; Mileage = mileage; TankVolume = tankVolume; GasolineConsumption100 = gasolineConsumption100; }
+    public (bool needRefuel, double distanceСovered) Drive(double distance)
+    {
+        bool needRefuel = false;
+        double distanceСovered = 0;
+        for (double i = 0; i < distance; i += 0.1)
+        {
+            if ((GasolineAmount / TankVolume) * 100 < 10)
+            {
+                needRefuel = true;
+                break;
+            }
+            var spentGasoline = (GasolineConsumption100 / 100) * 0.1;
+            Mileage += i;
+            GasolineAmount -= spentGasoline;
+            distanceСovered += 0.1;
+        }
+        return (needRefuel, distanceСovered);
+    }
+
+    static void Main(string[] args)
+    {
+        Car AUTO = new Car(50, 55000);
+        var driveInfo = AUTO.Drive(35);
+        if (driveInfo.needRefuel)
+        {
+            Console.WriteLine($"Бензина хватило {driveInfo.distanceСovered}км, пора заправиться!");
+        }
+        else
+        {
+            Console.WriteLine($"Вы проехали {driveInfo.distanceСovered}км, бензина осталось {AUTO.GasolineAmount}л.");
+        }
+        Console.ReadLine();
+    }
+}
+public class SuperCar
+{
+    public double TankVolume { get; private set; }
+    public double GasolineAmount { get; private set; }
+    public double GasolineConsumption200 { get; private set; }
+    public double Mileage { get; private set; }
+    public SuperCar(double gasolineAmount, double mileage, double tankVolume = 40, double gasolineConsumption200 = 8.4) { GasolineAmount = gasolineAmount; Mileage = mileage; TankVolume = tankVolume; GasolineConsumption200 = gasolineConsumption200; }
+    public (bool needRefuel, double distanceСovered) Drive(double distance)
+    {
+        bool needRefuel = false;
+        double distanceСovered = 0;
+        for (double i = 0; i < distance; i += 0.1)
+        {
+            if ((GasolineAmount / TankVolume) * 100 < 10)
+            {
+                needRefuel = true;
+                break;
+            }
+            var spentGasoline = (GasolineConsumption200 / 100) * 0.1;
+            Mileage += i;
+            GasolineAmount -= spentGasoline;
+            distanceСovered += 0.1;
+        }
+        return (needRefuel, distanceСovered);
+    }
+
+    static void main(string[] args)
+    {
+        SuperCar AUTO = new SuperCar(50, 55000);
+        var driveInfo = AUTO.Drive(35);
+        if (driveInfo.needRefuel)
+        {
+            Console.WriteLine($"Бензина хватило {driveInfo.distanceСovered}км, пора заправиться!");
+        }
+        else
+        {
+            Console.WriteLine($"Вы проехали {driveInfo.distanceСovered}км, бензина осталось {AUTO.GasolineAmount}л.");
+        }
+        Console.ReadLine();
+    }
+}
