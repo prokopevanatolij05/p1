@@ -1,58 +1,62 @@
 internal class Program
+{
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
+        Man man = new Man();
+        Orc orc = new Orc();
+
+        Console.WriteLine("Нанесение урона человеку");
+        orc.SetDamage(man, 50);
+
+        Console.WriteLine("Нанесение урона орку");
+        man.SetDamage(orc, 100);
+
+        Console.ReadKey();
+    }
+}
+
+public abstract class Character
+{
+    public int Health { get; private set; }
+
+    public Character()
+    {
+        Health = 100;
+    }
+
+    public virtual void GetDamage(int damage)
+    {
+        Health -= damage;
+        if (Health < 1)
         {
-            Man man = new Man();
-            Orc orc = new Orc();
- 
-            Console.WriteLine("Нанесение урона человеку");
-            orc.SetDamage(man, 50);
- 
-            Console.WriteLine("Нанесение урона орку");
-            man.SetDamage(orc, 100);
- 
-            Console.ReadKey();
+            Console.WriteLine("Орк погиб");
+        }
+        if (Health > 1)
+        {
+            Console.WriteLine("Персонаж выжил");
         }
     }
- 
-    public abstract class Character
+
+    public void SetDamage(Character character, int damage)
     {
-        public int Health { get; private set; }
- 
-        public Character()
-        {
-            Health = 100;
-        }
- 
-        public virtual void GetDamage(int damage)
-        {
-            Health -= damage;
-            if (Health < 1)
-            {
-                Console.WriteLine("Персонаж погиб");
-            }
-        }
- 
-        public void SetDamage(Character character, int damage)
-        {
-            character.GetDamage(damage);
-        }
+        character.GetDamage(damage);
     }
- 
-    public class Man : Character
+}
+
+public class Man : Character
+{
+    public override void GetDamage(int damage)
     {
-        public override void GetDamage(int damage)
-        {
-            Console.WriteLine($"Человек получил урон: {damage}");
-            base.GetDamage(damage);
-        }
+        Console.WriteLine($"Человек получил урон: {damage}");
+        base.GetDamage(damage);
     }
- 
-    public class Orc : Character
+}
+
+public class Orc : Character
+{
+    public override void GetDamage(int damage)
     {
-        public override void GetDamage(int damage)
-        {
-            Console.WriteLine($"Орк получил урон: {damage}");
-            base.GetDamage(damage);
-        }
+        Console.WriteLine($"Орк получил урон: {damage}");
+        base.GetDamage(damage);
     }
+}
